@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync - Study Smarter Together</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #F0F4F8; color: #212121; }
+
+        .hero {
+            background: linear-gradient(135deg, #1F4E79, #2E75B6, #D6E4F0);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            margin: 0 auto 24px;
+            display: block;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            object-fit: cover;
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .hero .tagline {
+            font-size: 22px;
+            color: #D6E4F0;
+            margin-bottom: 32px;
+        }
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+        }
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1F4E79;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .problem {
+            background: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        .problem h2 { font-size: 36px; color: #1F4E79; margin-bottom: 16px; }
+        .problem p {
+            font-size: 18px; color: #555;
+            max-width: 700px; margin: 0 auto 40px; line-height: 1.7;
+        }
+        .problem-cards {
+            display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+        }
+        .problem-card {
+            background: #F0F4F8; border-radius: 16px; padding: 24px; width: 200px;
+        }
+        .problem-card .icon { font-size: 36px; margin-bottom: 12px; }
+        .problem-card p { font-size: 14px; color: #555; }
+
+        .features {
+            background: linear-gradient(135deg, #1F4E79, #2E75B6);
+            padding: 60px 40px; text-align: center; color: white;
+        }
+        .features h2 { font-size: 36px; margin-bottom: 8px; }
+        .features .subtitle { color: #D6E4F0; font-size: 16px; margin-bottom: 40px; }
+        .features-grid {
+            display: flex; justify-content: center; gap: 20px;
+            flex-wrap: wrap; max-width: 900px; margin: 0 auto;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 16px; padding: 24px 20px; width: 220px;
+        }
+        .feature-card .icon { font-size: 40px; margin-bottom: 12px; }
+        .feature-card h3 { font-size: 16px; font-weight: bold; margin-bottom: 8px; }
+        .feature-card p { font-size: 13px; color: #D6E4F0; line-height: 1.5; }
+
+        .screenshots {
+            background: #F0F4F8; padding: 60px 40px; text-align: center;
+        }
+        .screenshots h2 { font-size: 36px; color: #1F4E79; margin-bottom: 8px; }
+        .screenshots .subtitle { color: #888; margin-bottom: 40px; font-size: 16px; }
+        .phone-mockups {
+            display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+        }
+        .phone {
+            width: 200px;
+            background: #1F4E79;
+            border-radius: 32px;
+            padding: 16px 12px;
+            box-shadow: 0 16px 48px rgba(31,78,121,0.3);
+        }
+        .phone-screen {
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 360px;
+        }
+        .screen-login {
+            background: linear-gradient(135deg, #1F4E79, #2E75B6);
+            padding: 16px;
+        }
+        .login-logo {
+            width: 52px; height: 52px;
+            background: white; border-radius: 14px;
+            margin: 16px auto 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; font-weight: bold; color: #1F4E79;
+        }
+        .login-app-name {
+            color: white; font-size: 18px; font-weight: bold;
+            text-align: center; margin-bottom: 4px;
+        }
+        .login-tagline {
+            color: #D6E4F0; font-size: 10px; text-align: center; margin-bottom: 14px;
+        }
+        .login-card {
+            background: white; border-radius: 12px; padding: 14px;
+        }
+        .login-card-title {
+            font-size: 13px; font-weight: bold; color: #1F4E79; margin-bottom: 10px;
+        }
+        .mock-input {
+            background: #F0F4F8; border-radius: 8px; padding: 8px 10px;
+            font-size: 10px; color: #888; margin-bottom: 8px;
+        }
+        .mock-btn {
+            background: #1F4E79; color: white; border-radius: 20px;
+            padding: 8px; text-align: center; font-size: 11px; font-weight: bold;
+        }
+        .mock-link {
+            text-align: center; font-size: 9px; color: #2E75B6; margin-top: 8px;
+        }
+
+        .screen-home { background: #F0F4F8; padding: 12px; }
+        .home-header {
+            background: linear-gradient(135deg, #1F4E79, #2E75B6);
+            border-radius: 12px; padding: 12px; margin-bottom: 10px;
+        }
+        .home-welcome { color: white; font-size: 11px; font-weight: bold; }
+        .home-sub { color: #D6E4F0; font-size: 9px; margin-top: 2px; }
+        .home-section { font-size: 10px; font-weight: bold; color: #1F4E79; margin-bottom: 6px; }
+        .home-card {
+            background: white; border-radius: 10px; padding: 10px;
+            margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+        }
+        .home-avatar {
+            width: 28px; height: 28px; border-radius: 8px;
+            background: linear-gradient(135deg, #1F4E79, #2E75B6);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 12px; font-weight: bold; flex-shrink: 0;
+        }
+        .home-info { flex: 1; }
+        .home-name { font-size: 9px; font-weight: bold; color: #212121; }
+        .home-sub2 { font-size: 8px; color: #888; margin-top: 2px; }
+        .home-join {
+            background: #1F4E79; color: white; border-radius: 8px;
+            padding: 4px 8px; font-size: 8px; font-weight: bold;
+        }
+        .home-nav {
+            display: flex; justify-content: space-around;
+            background: white; border-radius: 10px; padding: 8px; margin-top: 8px;
+        }
+        .nav-item { text-align: center; font-size: 7px; color: #888; }
+        .nav-item.active { color: #1F4E79; font-weight: bold; }
+        .nav-icon { font-size: 13px; }
+
+        .screen-chat { background: #F0F4F8; padding: 12px; }
+        .chat-header {
+            background: linear-gradient(135deg, #1F4E79, #2E75B6);
+            border-radius: 12px; padding: 12px; margin-bottom: 10px;
+        }
+        .chat-title { color: white; font-size: 11px; font-weight: bold; }
+        .chat-sub { color: #D6E4F0; font-size: 8px; }
+        .msg-in {
+            background: white; border-radius: 10px; padding: 8px;
+            margin-bottom: 6px; margin-right: 30px; font-size: 9px; color: #212121;
+        }
+        .msg-sender { color: #2E75B6; font-size: 8px; font-weight: bold; margin-bottom: 2px; }
+        .msg-out {
+            background: #1F4E79; color: white; border-radius: 10px;
+            padding: 8px; margin-bottom: 6px; margin-left: 30px; font-size: 9px;
+        }
+        .chat-bar {
+            background: white; border-radius: 10px; padding: 8px;
+            display: flex; align-items: center; gap: 6px; margin-top: 6px;
+        }
+        .chat-input-mock { flex: 1; font-size: 8px; color: #888; }
+        .chat-send-btn {
+            background: #1F4E79; color: white; border-radius: 8px;
+            width: 22px; height: 22px; display: flex;
+            align-items: center; justify-content: center; font-size: 10px;
+        }
+        .phone-label {
+            color: #1F4E79; text-align: center; font-size: 13px;
+            margin-top: 12px; font-weight: bold;
+        }
+
+        .how { background: white; padding: 60px 40px; text-align: center; }
+        .how h2 { font-size: 36px; color: #1F4E79; margin-bottom: 8px; }
+        .how .subtitle { color: #888; margin-bottom: 40px; font-size: 16px; }
+        .steps { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+        .step { width: 200px; text-align: center; }
+        .step-number {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, #1F4E79, #2E75B6);
+            border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; color: white; font-size: 24px;
+            font-weight: bold; margin: 0 auto 16px;
+        }
+        .step h3 { font-size: 16px; color: #1F4E79; margin-bottom: 8px; }
+        .step p { font-size: 13px; color: #555; line-height: 1.5; }
+
+        .tech { background: #F0F4F8; padding: 40px; text-align: center; }
+        .tech h2 { font-size: 28px; color: #1F4E79; margin-bottom: 24px; }
+        .tech-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .tech-badge {
+            background: white; border: 2px solid #D6E4F0;
+            color: #1F4E79; padding: 8px 20px; border-radius: 50px;
+            font-size: 14px; font-weight: bold;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #1F4E79, #2E75B6);
+            padding: 40px; text-align: center; color: white;
+        }
+        .footer h2 { font-size: 28px; margin-bottom: 8px; }
+        .footer p { color: #D6E4F0; margin-bottom: 24px; }
+        .footer-pills { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .footer-pill {
+            background: rgba(255,255,255,0.2); padding: 10px 24px;
+            border-radius: 50px; font-size: 14px;
+        }
+        .footer-info { color: #D6E4F0; font-size: 13px; margin-top: 24px; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <div class="hero">
+        <img src="studysync_logo.svg" alt="StudySync Logo" class="hero-logo">
+        <h1>StudySync</h1>
+        <p class="tagline">Study Smarter Together</p>
+        <div class="badges">
+            <span class="hero-badge">📱 Android App</span>
+            <span class="hero-badge">🔥 Firebase Powered</span>
+            <span class="hero-badge">🎓 Built for Students</span>
+        </div>
+        <a href="#features" class="cta-button">✨ Discover StudySync</a>
+    </div>
+
+    <!-- Problem -->
+    <div class="problem">
+        <h2>The Problem with Study Groups Today</h2>
+        <p>Finding the right study partners is harder than it should be. Students waste time on scattered group chats, missed sessions, and awkward cold asks — when they should be focused on learning.</p>
+        <div class="problem-cards">
+            <div class="problem-card">
+                <div class="icon">😩</div>
+                <p>Hard to find classmates in the same course</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">📅</div>
+                <p>Scheduling conflicts across different timetables</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">💬</div>
+                <p>Scattered across WhatsApp, GroupMe, Discord</p>
+            </div>
+            <div class="problem-card">
+                <div class="icon">🚪</div>
+                <p>New students left out of established groups</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features" id="features">
+        <h2>Everything You Need to Study Together</h2>
+        <p class="subtitle">One app. All your study needs.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon">🔍</div>
+                <h3>Course-Based Discovery</h3>
+                <p>Find study groups for your exact courses — not just subjects.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">💬</div>
+                <h3>Real-Time Chat</h3>
+                <p>Message your group instantly. No switching apps, no delays.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📅</div>
+                <h3>Session Scheduling</h3>
+                <p>Set date, time and location for study sessions on and off campus.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⭐</div>
+                <h3>Rating System</h3>
+                <p>Rate sessions and partners. Find reliable, committed study buddies.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔔</div>
+                <h3>Smart Notifications</h3>
+                <p>Never miss a session with timely reminders and group alerts.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">👤</div>
+                <h3>Student Profiles</h3>
+                <p>Showcase your major, courses, and study preferences.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="screenshots">
+        <h2>See It In Action</h2>
+        <p class="subtitle">Clean, intuitive, and built for students</p>
+        <div class="phone-mockups">
+
+            <!-- Login -->
+            <div>
+                <div class="phone">
+                    <div class="phone-screen screen-login">
+                        <img src="studysync_logo.svg" alt="StudySync Logo" style="width:52px;height:52px;border-radius:14px;margin:16px auto 10px;display:block;">
+                        <div class="login-app-name">StudySync</div>
+                        <div class="login-tagline">Study Smarter Together</div>
+                        <div class="login-card">
+                            <div class="login-card-title">Welcome Back</div>
+                            <div class="mock-input">University Email</div>
+                            <div class="mock-input">Password</div>
+                            <div class="mock-btn">Log In</div>
+                            <div class="mock-link">Don't have an account? Register</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phone-label">Login</div>
+            </div>
+
+            <!-- Home -->
+            <div>
+                <div class="phone">
+                    <div class="phone-screen screen-home">
+                        <div class="home-header">
+                            <div class="home-welcome">Welcome back, Hakhilesh! 👋</div>
+                            <div class="home-sub">Find your study partners</div>
+                        </div>
+                        <div class="home-section">📅 Upcoming Sessions</div>
+                        <div class="home-card">
+                            <div class="home-avatar">C</div>
+                            <div class="home-info">
+                                <div class="home-name">COSC 6362 - Mobile Dev</div>
+                                <div class="home-sub2">Today 6:00 PM · Library 204</div>
+                            </div>
+                        </div>
+                        <div class="home-section">👥 Suggested Groups</div>
+                        <div class="home-card">
+                            <div class="home-avatar">M</div>
+                            <div class="home-info">
+                                <div class="home-name">MATH 2413 - Calculus</div>
+                                <div class="home-sub2">5 members · Tue/Thu</div>
+                            </div>
+                            <div class="home-join">Join</div>
+                        </div>
+                        <div class="home-nav">
+                            <div class="nav-item active"><div class="nav-icon">🏠</div>Home</div>
+                            <div class="nav-item"><div class="nav-icon">🔍</div>Discover</div>
+                            <div class="nav-item"><div class="nav-icon">💬</div>Chats</div>
+                            <div class="nav-item"><div class="nav-icon">👤</div>Profile</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phone-label">Home</div>
+            </div>
+
+            <!-- Chat -->
+            <div>
+                <div class="phone">
+                    <div class="phone-screen screen-chat">
+                        <div class="chat-header">
+                            <div class="chat-title">COSC 6362 - Android Wizards</div>
+                            <div class="chat-sub">3 members · Online</div>
+                        </div>
+                        <div class="msg-in">
+                            <div class="msg-sender">Vishakan</div>
+                            Are we meeting Friday at 4PM?
+                        </div>
+                        <div class="msg-out">Yes! Library Room 204 👍</div>
+                        <div class="msg-in">
+                            <div class="msg-sender">Vishakan</div>
+                            I'll bring my notes 📚
+                        </div>
+                        <div class="msg-out">See you there! 🎯</div>
+                        <div class="chat-bar">
+                            <div class="chat-input-mock">Type a message...</div>
+                            <div class="chat-send-btn">➤</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="phone-label">Chat</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="how">
+        <h2>How It Works</h2>
+        <p class="subtitle">Get started in 3 simple steps</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Create Your Profile</h3>
+                <p>Sign up with your institutional email and add your enrolled courses and major.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Discover Groups</h3>
+                <p>Browse study groups for your exact courses. Filter by on-campus or remote.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Study Together</h3>
+                <p>Join a group, schedule sessions, chat in real-time, and ace your exams!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech">
+        <h2>Built With Modern Technology</h2>
+        <div class="tech-badges">
+            <span class="tech-badge">☕ Java</span>
+            <span class="tech-badge">🤖 Android Studio</span>
+            <span class="tech-badge">🔥 Firebase Auth</span>
+            <span class="tech-badge">📊 Cloud Firestore</span>
+            <span class="tech-badge">🎨 Material Design</span>
+            <span class="tech-badge">📱 API 24+</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <img src="studysync_logo.svg" alt="StudySync Logo" style="width:80px;height:80px;border-radius:20px;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;">
+	<h2>StudySync</h2>
+        <p>The smarter way to study at your university</p>
+        <div class="footer-pills">
+            <span class="footer-pill">📱 Available on Android</span>
+            <span class="footer-pill">🆓 Free to Use</span>
+            <span class="footer-pill">🎓 Built for Students</span>
+        </div>
+        <div class="footer-info">
+            COSC 6362 Mobile Software Development · Summer 2026<br>
+            Developed by Hakhilesh Neelamegan
+        </div>
+    </div>
+
+</body>
+</html>
